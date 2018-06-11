@@ -16,8 +16,9 @@ function autocomplete(inputData, data) {
                 this.parentNode.appendChild(autocompletedItems);
 
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].name.substr(0, inputValue.length).toUpperCase() == inputValue.toUpperCase() || inputValue.length == 0) {
+                    if (!Utils.isHTML(data[i].name) && (data[i].name.substr(0, inputValue.length).toUpperCase() == inputValue.toUpperCase() || inputValue.length == 0)) {
                         appItem = document.createElement("DIV");
+                        appItem.innerHTML += "<img src='" + data[i].thumbnailUrl + "' class='thumbnail-item'></img>";
                         appItem.innerHTML += data[i].name;
                         appItem.innerHTML += "<input type='hidden' value='" + data[i].name + "'>";
                         appItem.addEventListener("click", function (e) {

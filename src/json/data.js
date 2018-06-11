@@ -19,11 +19,11 @@ var TABLE_DATA = [
     "name": "iCloud",
     "thumbnailUrl": "image/iCloud.png"
   },
-  // {
-  //   "id": "10",
-  //   "name": "<img onerror='window.document.body.innerHTML = \"<h1>XSS</h1>\";' src=''> ",
-  //   "thumbnailUrl": "image/iTunes.png"
-  // },
+  {
+    "id": "10",
+    "name": "<img onerror='window.document.body.innerHTML = \"<h1>XSS</h1>\";' src=''> ",
+    "thumbnailUrl": "image/iTunes.png"
+  },
   {
     "id": "4",
     "name": "Line@",
