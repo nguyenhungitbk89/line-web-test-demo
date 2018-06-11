@@ -1,7 +1,7 @@
 
 function autocomplete(inputData, data) {
     var currentFocusedItem;
-
+    var dataProvider = new localDataProvider();
     inputData.addEventListener("input", function (e) {
         var autocompletedItems,
             appItem, inputValue = this.value;
@@ -20,6 +20,7 @@ function autocomplete(inputData, data) {
                 appItem.addEventListener("click", function(e) {
                     inputData.value = this.getElementsByTagName("input")[0].value;
                     removeSuggestedList();
+                    dataProvider.saveData(inputValue);
                 });
                 autocompletedItems.appendChild(appItem);
             }
