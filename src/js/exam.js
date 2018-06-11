@@ -6,7 +6,8 @@ function autocomplete(inputData, data) {
     events.map(function (e) {
         inputData.addEventListener(e, function (e) {
                 var autocompletedItems,
-                    appItem, inputValue = this.value;
+                    appItem,
+                    inputValue = this.value;
                 removeSuggestedList();
                 currentFocusedItem = -1;
                 autocompletedItems = document.createElement("DIV");
@@ -19,7 +20,7 @@ function autocomplete(inputData, data) {
                         appItem = document.createElement("DIV");
                         appItem.innerHTML += data[i].name;
                         appItem.innerHTML += "<input type='hidden' value='" + data[i].name + "'>";
-                        appItem.addEventListener("click", function(e) {
+                        appItem.addEventListener("click", function (e) {
                             inputData.value = this.getElementsByTagName("input")[0].value;
                             removeSuggestedList();
                             dataProvider.saveData(inputValue);
@@ -34,13 +35,13 @@ function autocomplete(inputData, data) {
         var itemList = document.getElementById("autocomplete-list");
         if (itemList) 
             itemList = itemList.getElementsByTagName("div");
-        if (e.keyCode == 40) {// DOWN key is pressed
+        if (e.keyCode == 40) { // DOWN key is pressed
             currentFocusedItem++;
             activeFocusedItem(itemList);
         } else if (e.keyCode == 38) { //UP key is pressed
             currentFocusedItem--;
             activeFocusedItem(itemList);
-        } else if (e.keyCode == 13) {// ENTER key is pressed
+        } else if (e.keyCode == 13) { // ENTER key is pressed
             e.preventDefault();
             if (currentFocusedItem > -1) {
                 //Click on the selected item
@@ -60,11 +61,14 @@ function autocomplete(inputData, data) {
         }
     }
 
-    function activeFocusedItem(itemList){
-        if (!itemList) return false;
+    function activeFocusedItem(itemList) {
+        if (!itemList) 
+            return false;
         unActiveItem(itemList);
-        if (currentFocusedItem >= itemList.length) currentFocusedItem = 0;
-        if (currentFocusedItem < 0) currentFocusedItem = (itemList.length - 1);
+        if (currentFocusedItem >= itemList.length) 
+            currentFocusedItem = 0;
+        if (currentFocusedItem < 0) 
+            currentFocusedItem = (itemList.length - 1);
         itemList[currentFocusedItem].classList.add("autocomplete-active");
     }
 
@@ -75,6 +79,6 @@ function autocomplete(inputData, data) {
     }
 
     document.addEventListener("click", function (e) {
-            removeSuggestedList(e.target);
-        });
+        removeSuggestedList(e.target);
+    });
 }
