@@ -12,10 +12,10 @@
 <body>
     <div class="container">
         <h2>UIT Team JavaScript Testing</h2>
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
+        <form autocomplete="off" class="form-horizontal" role="form">
+            <div class="form-group autocomplete">
                 <label>Input service name: </label>
-                <input type="text" name="apps" value="" />
+                <input type="text" id="app-name-input" name="apps" value="" />
             </div>
         </form>
 
@@ -24,6 +24,9 @@
     </div>
     <script src="json/data.js"></script>
     <script src="js/exam.js"></script>
+    <script>
+        autocomplete(document.getElementById("app-name-input"), TABLE_DATA);
+    </script>
 </body>
 
 </html>
