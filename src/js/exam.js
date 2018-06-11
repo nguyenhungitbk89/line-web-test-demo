@@ -1,6 +1,7 @@
 
 function autocomplete(inputData, data) {
     var currentFocusedItem;
+
     inputData.addEventListener("input", function (e) {
         var autocompletedItems,
             appItem, inputValue = this.value;
@@ -10,6 +11,7 @@ function autocomplete(inputData, data) {
         autocompletedItems.setAttribute("id", "autocomplete-list");
         autocompletedItems.setAttribute("class", "autocomplete-items");
         this.parentNode.appendChild(autocompletedItems);
+        
         for (var i = 0; i < data.length; i++) {
             if (data[i].name.substr(0, inputValue.length).toUpperCase() == inputValue.toUpperCase() || inputValue.length == 0) {
                 appItem = document.createElement("DIV");
@@ -24,12 +26,47 @@ function autocomplete(inputData, data) {
         }
     });
 
+    inputData.addEventListener("keydown", function (e) {
+        var itemList = document.getElementById("autocomplete-list");
+        if (itemList) 
+            itemList = itemList.getElementsByTagName("div");
+        if (e.keyCode == 40) {// DOWN key is pressed
+            currentFocusedItem++;
+            activeFocusedItem(itemList);
+        } else if (e.keyCode == 38) { //UP key is pressed
+            currentFocusedItem--;
+            activeFocusedItem(itemList);
+        } else if (e.keyCode == 13) {// ENTER key is pressed
+            e.preventDefault();
+            if (currentFocusedItem > -1) {
+                //Click on the selected item
+                if (itemList) {
+                    itemList[currentFocusedItem].click();
+                }
+            }
+        }
+    });
+
     function removeSuggestedList(elmnt) {
         var itemList = document.getElementsByClassName("autocomplete-items");
         for (var i = 0; i < itemList.length; i++) {
             if (elmnt != itemList[i] && elmnt != inputData) {
                 itemList[i].parentNode.removeChild(itemList[i]);
             }
+        }
+    }
+
+    function activeFocusedItem(itemList){
+        if (!itemList) return false;
+        unActiveItem(itemList);
+        if (currentFocusedItem >= itemList.length) currentFocusedItem = 0;
+        if (currentFocusedItem < 0) currentFocusedItem = (itemList.length - 1);
+        itemList[currentFocusedItem].classList.add("autocomplete-active");
+    }
+
+    function unActiveItem(itemList) {
+        for (var i = 0; i < itemList.length; i++) {
+            itemList[i].classList.remove("autocomplete-active");
         }
     }
 
