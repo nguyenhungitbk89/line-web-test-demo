@@ -9,6 +9,7 @@ class localDataProvider{
     }
 
     saveData(searchKeyWord){
+        if(!searchKeyWord) return;
         let historyData = this.dataSet.getItem("historySearch");
         historyData = historyData? JSON.parse(historyData) : [];
         
@@ -37,7 +38,8 @@ class localDataProvider{
             let itemIdx = historyData.findIndex(function(item){
                 return item.keyWord.toLowerCase() == searchKeyWord.toLowerCase()
             });
-            historyData.slice(itemIdx, 1);
+            historyData.splice(itemIdx, 1)
+            this.dataSet.setItem("historySearch", JSON.stringify(historyData));
         }
     }
 
