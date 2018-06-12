@@ -37,7 +37,7 @@ input[type=submit] {
   padding: 10px;
   cursor: pointer;
   background-color: #dddddd; 
-  border-bottom: 1px solid #d4d4d4; 
+  border-bottom: 1.5px solid #d4d4d4; 
 }
 .autocomplete-items div:hover {
   /*when hovering an item:*/
@@ -68,3 +68,17 @@ input[type=submit] {
     font-weight: 500;
     font-size: 26;
 }
+
+.list-group-item{
+    background-color: #dddddd; 
+    border-bottom: 1.5px solid #d4d4d4; 
+}
+
+.history-form{
+    padding: 0px;
+    background-color: #dddddd; 
+}
+
+.list-group-item:hover {
+    background-color: #a2a2a2; 
+  }
