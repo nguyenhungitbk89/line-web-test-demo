@@ -1,0 +1,89 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font: 16px Tahoma;
+}
+
+.autocomplete {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 370px;
+    input {
+        border: 1px solid $input-border-color;
+        padding: 10px;
+        font-size: 16px;
+    }
+    input[type=text] {
+        background-color: $input-background-color;
+        width: 100%;
+    }
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid $item-border-color;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: $auto-item-bak-color;
+        border-bottom: 1.5px solid $item-border-color;
+    }
+    div:hover {
+        /*when hovering an item:*/
+        background-color: $active-item-color;
+    }
+    .autocomplete-active {
+        /*when navigating through the items using the arrow keys:*/
+        background-color: $active-item-color !important;
+        color: $active-item-text-color;
+    }
+    .thumbnail-item {
+        width: 40px;
+        margin: auto 13px auto 11px;
+    }
+}
+
+.form-title {
+    text-align: center;
+}
+
+.page-navigate {
+    float: right;
+}
+
+.item-action {
+    float: right;
+    margin-left: 10px;
+}
+
+.row-data {
+    font-weight: 500;
+    font-size: 26;
+}
+
+.history-form {
+    padding: 0px;
+    .list-group-item {
+        background-color: $auto-item-bak-color;
+        border-bottom: 1.5px solid $item-border-color;
+    }
+    .list-group-item:hover {
+        background-color: $active-item-color;
+    }
+}
+
+.lable-input {
+    font-family: Tahoma !important;
+    font-weight: normal !important;
+}
