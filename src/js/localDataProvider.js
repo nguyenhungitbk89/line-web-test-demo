@@ -10,11 +10,11 @@ class localDataProvider{
 
     saveData(searchKeyWord){
         if(!searchKeyWord) return;
-        let historyData = this.dataSet.getItem("historySearch");
+        var historyData = this.dataSet.getItem("historySearch");
         historyData = historyData? JSON.parse(historyData) : [];
         
         if(this.isExistingKeyWord(searchKeyWord, historyData)){
-            let itemIdx = historyData.findIndex(function(item){
+            var itemIdx = historyData.findIndex(function(item){
                 return item.keyWord.toLowerCase() == searchKeyWord.toLowerCase()
             });
             historyData[itemIdx].count = historyData[itemIdx].count + 1; 
@@ -27,15 +27,15 @@ class localDataProvider{
 
     retrieveData(key){
         var ret = this.dataSet.getItem("historySearch");
-        return JSON.parse(ret);
+        return ret? JSON.parse(ret) : [];
     }
     
     deleteHistoryItem(searchKeyWord){
-        let historyData = this.dataSet.getItem("historySearch");
+        var historyData = this.dataSet.getItem("historySearch");
         historyData = historyData? JSON.parse(historyData) : [];
 
         if(historyData.length > 0 && this.isExistingKeyWord(searchKeyWord, historyData)){
-            let itemIdx = historyData.findIndex(function(item){
+            var itemIdx = historyData.findIndex(function(item){
                 return item.keyWord.toLowerCase() == searchKeyWord.toLowerCase()
             });
             historyData.splice(itemIdx, 1)

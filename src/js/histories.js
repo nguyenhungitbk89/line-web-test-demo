@@ -7,10 +7,9 @@ function dataBindingHistories() {
         var historyItem = document.createElement("li");
         historyItem.setAttribute("id", historyData[i].keyWord);
         historyItem.setAttribute("class", "list-group-item");
-        historyItem.innerHTML += "<a href='history.html'><span class='glyphicon glyphicon-trash'>Delete</span></a>&nbsp"
         historyItem.innerHTML += historyData[i].keyWord;
+        historyItem.innerHTML += "<a class='item-action' href='history.html'><span class='badge'>Delete</span></a>&nbsp"
         historyItem.innerHTML += "<span class='badge'>" + historyData[i].count + "</span>";
-
         historyItem.addEventListener("click", function (e) {
             if(e.target.localName == "span")
             {
