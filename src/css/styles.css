@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 body {
-  font: 16px Arial; 
+  font: 16px Tahoma;
 }
 .autocomplete {
   position: relative;
@@ -81,4 +81,9 @@ input[type=submit] {
 
 .list-group-item:hover {
     background-color: #a2a2a2; 
-  }
+}
+
+.lable-input{
+    font-family: Tahoma !important;
+    font-weight: normal !important;
+}
